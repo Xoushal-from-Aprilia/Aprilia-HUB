@@ -1,14 +1,128 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html><html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hub degli eventi e delle attività della città">
+    <title>Hub della Città</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #943DDF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }header {
+        background-color: #943DDF;
+        color: white;
+        padding: 15px 0;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .content {
+        max-width: 800px;
+        width: 90%;
+        margin: 80px auto 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .event, .activity {
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .event:last-child, .activity:last-child {
+        border-bottom: none;
+    }
+
+    .event h3, .activity h3 {
+        margin: 5px 0;
+        color: #943DDF;
+    }
+
+    .event p, .activity p {
+        color: #555;
+    }
+
+    .search {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search input {
+        padding: 10px;
+        width: 80%;
+        max-width: 400px;
+        border: 2px solid #943DDF;
+        border-radius: 25px;
+        outline: none;
+    }
+
+    @media (max-width: 600px) {
+        .content {
+            padding: 15px;
+        }
+    }
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.toLowerCase();
+            const items = document.querySelectorAll('.event, .activity');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+    });
+</script>
+
 </head>
-
 <body>
-  
-</body>
+    <header>
+        <h1>Hub della Città</h1>
+    </header><div class="content">
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="Cerca eventi o attività...">
+    </div>
 
+    <h2>Eventi</h2>
+    <div class="event">
+        <h3>Concerto di Musica Jazz</h3>
+        <p>Luogo: Piazza Centrale</p>
+        <p>Data: 20 Maggio 2025</p>
+    </div>
+
+    <div class="event">
+        <h3>Mercato dell'Artigianato</h3>
+        <p>Luogo: Corso Principale</p>
+        <p>Data: 25 Maggio 2025</p>
+    </div>
+
+    <h2>Attività</h2>
+    <div class="activity">
+        <h3>Palestra Fitness Club</h3>
+        <p>Luogo: Via dello Sport</p>
+        <p>Orari: 06:00 - 22:00</p>
+    </div>
+
+    <div class="activity">
+        <h3>Biblioteca Comunale</h3>
+        <p>Luogo: Piazza della Cultura</p>
+        <p>Orari: 09:00 - 18:00</p>
+    </div>
+</div>
+
+</body>
 </html>
